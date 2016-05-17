@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>英雄联盟战绩查询</title>
+    <meta charset="utf-8"/>
+{% load staticfiles %}
+    <link rel="stylesheet" href="{%static "./css/main.css"%}"/>
+    <script src="{%static "./js/jquery-1.12.2.min.js"%}"></script>
+    <script src="{%static "./js/main.js"%}"></script>
+    <style type="text/css">
+    #video{
+        box-sizing: border-box;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        z-index: 2;
+        top:0;
+        right:2em;
+        }
+   
+    </style>
+  
+</head>
+<body>
+    
+<section id="container">
+    <header><h2>战绩查询</h2></header>
+    <section id="main">
+        <section id="form-area">
+            <form id="form">
+                <div id="daqu">
+                    <input type="radio" id="aioniya" name="daqu" hidden checked class="daqu" value=1>
+                    <label for="aioniya" class="daqu-lable">艾欧尼亚</label>
+                    <input type="radio" id="shuruima" name="daqu" hidden class="daqu" value=2>
+                    <label for="shuruima" class="daqu-lable">恕瑞玛</label>
+                    <input type="radio" id="wuweixianfeng" name="daqu" hidden class="daqu"  value=3>
+                    <label for="wuweixianfeng" class="daqu-lable">无畏先锋</label>
+                    <input type="radio" id="niuquconglin" name="daqu" hidden class="daqu"  value=5>
+                    <label for="niuquconglin" class="daqu-lable">扭曲丛林</label>
+                </div>
+                <div id="exact">
+                    <h3>精确查找</h3>
+                    <input type="number" placeholder="精确查找，请输入玩家ID" id="id">
+                </div>
+                <div id="no-exact">
+                    <h3>条件查找（以下条件非必填）</h3>
+                    <input type="number" placeholder="请输入玩家等级（1-30)" id="level">
+                    <input type="text" placeholder="请输入玩家姓名" id="name">
+                    <select id="duanwei" placeholder="请输入玩家段位">
+                        <option value="">请选择段位</option>
+                        <option value="">无</option>
+                        <option value="1">英勇黄铜</option>
+                        <option value="2">不屈白银</option>
+                        <option value="3">荣耀黄金</option>
+                        <option value="4">华贵铂金</option>
+                        <option value="5">璀璨钻石</option>
+                        <option value="6">超凡大师</option>
+                        <option value="7">最强王者</option>
+                    </select>
+
+                </div>
+
+            </form>
+            <button id="form-button">查询</button>
+
+        </section>
+        <section id="output">
+            <textarea id="output-sql" readonly></textarea>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <td>玩家ID</td>
+                        <td>昵称</td>
+                        <td>等级</td>
+                        <td>大区</td>
+                        <td>段位</td>
+                        <td>总场次</td>
+                        <td>胜场</td>
+                        <td>胜率</td>
+                        <td>更新</td>
+                        <td>删除</td>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <footer>powered by <a href="http://www.wikibady.com">wikibady</a></footer>
+</section>
+<section id="add"></section>
+<section id="add-bg">
+    <section id="add-form">
+        <h2>添加玩家信息</h2>
+        <input type="text" id="add-name" placeholder="请输入玩家姓名"></input>
+        <input type="text" id="add-level" placeholder="请输入玩家等级"></input>
+        
+        <input type="text" id="add-zongchangci" placeholder="请输入玩家总场次"></input>
+        <input type="text" id="add-shengchang" placeholder="请输入玩家获胜场次"></input>
+        <select id="add-daqu">
+            <option value="">请选择大区</option>
+            <option value="1">艾欧尼亚</option>
+            <option value="2">恕瑞玛</option>
+            <option value="3">无畏先锋</option>
+            <option value="5">扭曲丛林</option>
+        </select>
+        <select id="add-duanwei">
+            <option value="">请选择段位</option>
+            <option value="">无</option>
+            <option value="1">英勇黄铜</option>
+            <option value="2">不屈白银</option>
+            <option value="3">荣耀黄金</option>
+            <option value="4">华贵铂金</option>
+            <option value="5">璀璨钻石</option>
+            <option value="6">超凡大师</option>
+            <option value="7">最强王者</option>
+        </select>
+        <button id="add-save">添加</button>
+    </section>
+</section>
+  <script type="text/javascript">
+        
+           /** navigator.getUserMedia = navigator.getUserMedia ||navigator.webkitGetUserMedia||window.navigator.mozGetUserMedia;
+            window.URL=window.URL||window.webkitURL;
+            var video=document.getElementById("video");
+            navigator.getUserMedia({video:true,audio:false},
+                function(stream){
+                    video.src=window.URL.createObjectURL(stream);
+                },
+                function(err){
+                    console.log(err);
+                });**/
+    </script>
+</body>
+</html>
